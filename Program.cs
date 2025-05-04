@@ -20,6 +20,7 @@ namespace Console.CDT_Base64
 {
     /* Imports from NET Framework */
     using System;
+    using static System.Net.Mime.MediaTypeNames;
 
     public class Program
     {
@@ -30,7 +31,8 @@ namespace Console.CDT_Base64
                 Console.Clear();
                 Console.WriteLine("1. Erstellen eines Base64 String");
                 Console.WriteLine("2. String Encode / Decode");
-                Console.WriteLine("3. falscher Base64 String");
+                Console.WriteLine("3. gültiger Base64 String");
+                Console.WriteLine("4. falscher Base64 String");
                 Console.WriteLine("X. Beenden");
                 Console.WriteLine("Wählen Sie einen Menüpunkt oder 'x' für beenden");
                 ConsoleKey key = Console.ReadKey(true).Key;
@@ -51,6 +53,10 @@ namespace Console.CDT_Base64
                     else if (key == ConsoleKey.D3)
                     {
                         MenuPoint3();
+                    }
+                    else if (key == ConsoleKey.D4)
+                    {
+                        MenuPoint4();
                     }
                 }
             }
@@ -112,8 +118,28 @@ namespace Console.CDT_Base64
 
         private static void MenuPoint3()
         {
-            Base64 aa = "aGFsbG8gR2VyaGFyZ==";
-            bool aaValid = aa.IsBase64String();
+            Console.Clear();
+
+            Base64 base64String = "aGFsbG8gR2VyaGFyZA==";
+            bool base64StringValid = base64String.IsBase64String();
+            string validText = base64StringValid == true ? "Ja" : "Nein";
+            Console.WriteLine($"Der String ist Base64 kodiert: {validText}");
+
+            Console.WriteLine("Mit einer beliebigen Taste zurück zum Menü!");
+            Console.ReadKey();
+        }
+
+        private static void MenuPoint4()
+        {
+            Console.Clear();
+
+            Base64 base64String = "aGFsbG8gR2VyaGFyZ==";
+            bool base64StringValid = base64String.IsBase64String();
+            string validText = base64StringValid == true ? "Ja" : "Nein";
+            Console.WriteLine($"Der String ist Base64 kodiert: {validText}");
+
+            Console.WriteLine("Mit einer beliebigen Taste zurück zum Menü!");
+            Console.ReadKey();
         }
 
         #region Image Hilfsmethoden
